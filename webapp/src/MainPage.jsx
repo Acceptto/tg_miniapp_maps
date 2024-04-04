@@ -3,7 +3,7 @@ import 'react-day-picker/dist/style.css';
 import { initMiniApp } from './api';
 import { useWebApp } from '@vkruglikov/react-telegram-web-app';
 import { useQuery } from '@tanstack/react-query';
-import Maps from './Maps';
+import Map from './Map';
 
 function MainPage() {
 	const { ready, initData, backgroundColor } = useWebApp();
@@ -30,7 +30,7 @@ function MainPage() {
 				}}
 			>
 				<div>
-					<Maps />
+					<Map />
 				</div>
 			</div>
 		);
@@ -39,7 +39,7 @@ function MainPage() {
 		return <div>Error! Try reloading the app</div>;
 	}
 
-	return <Maps token={token} />;
+	return <Map token={token} />;
 }
 
 export default MainPage;

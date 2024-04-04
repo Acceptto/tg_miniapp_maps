@@ -5,7 +5,7 @@ const generateRandom = () => {
 	return Math.random() * 10000000000000000;
 };
 
-const MyMap = () => {
+const Map = () => {
 	const { isLoaded } = useJsApiLoader({
 		googleMapsApiKey: 'AIzaSyC8NppbeRAKx4bpUqCVxc87Z-DASLD_p_Q',
 	});
@@ -33,10 +33,10 @@ const MyMap = () => {
 	);
 };
 
-export default function Map() {
+export default function MapFailed() {
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
-			<MyMap />
+			<Map />
 		</Suspense>
 	);
 }
