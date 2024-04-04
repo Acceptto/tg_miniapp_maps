@@ -33,10 +33,4 @@ const Map = () => {
 	);
 };
 
-export default function MapFailed() {
-	return (
-		<Suspense fallback={<div>Loading...</div>}>
-			<Map />
-		</Suspense>
-	);
-}
+export default <Map />;
