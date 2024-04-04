@@ -29,9 +29,7 @@ function MainPage() {
 					backgroundColor,
 				}}
 			>
-				<div>
-					<Map />
-				</div>
+				<div>Loading</div>
 			</div>
 		);
 	}
