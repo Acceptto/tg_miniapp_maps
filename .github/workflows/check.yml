@@ -45,27 +45,27 @@ jobs:
       - name: Check that the secrets are set in the repository
         id: check_secrets_set
         env: 
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: |
           result=0
           printf "### 🔐 Checking if secrets are set \n\n" >> $GITHUB_STEP_SUMMARY
           printf "| Secret | Description |\n" >> $GITHUB_STEP_SUMMARY
           printf "| --- | --- |\n" >> $GITHUB_STEP_SUMMARY
-          if [ -z "$CF_API_TOKEN" ]; then
-            printf "| ❌ \`CF_API_TOKEN\`| Please go to [CloudFlare Dashboard](https://dash.cloudflare.com/profile/api-tokens) and create a Worker token. For this project we need access to Workers, D1 and Pages. |\n" >> $GITHUB_STEP_SUMMARY
-            echo "::error::Secret CF_API_TOKEN not set"
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            printf "| ❌ \`CLOUDFLARE_API_TOKEN\`| Please go to [CloudFlare Dashboard](https://dash.cloudflare.com/profile/api-tokens) and create a Worker token. For this project we need access to Workers, D1 and Pages. |\n" >> $GITHUB_STEP_SUMMARY
+            echo "::error::Secret CLOUDFLARE_API_TOKEN not set"
             result=1
           else 
-            printf "| ✅ \`CF_API_TOKEN\` | Found |\n" >> $GITHUB_STEP_SUMMARY
+            printf "| ✅ \`CLOUDFLARE_API_TOKEN\` | Found |\n" >> $GITHUB_STEP_SUMMARY
           fi
-          if [ -z "$CF_ACCOUNT_ID" ]; then
-            printf "| ❌ \`CF_ACCOUNT_ID\` | Please go to [CloudFlare Workers Page](https://dash.cloudflare.com/?to=/:account/workers) and copy the account id from the right sidebar. Note that you might need to create a \"Hello World\" worker before you see the account id in the interface. |\n" >> $GITHUB_STEP_SUMMARY
-            echo "::error::Secret CF_ACCOUNT_ID not set"
+          if [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            printf "| ❌ \`CLOUDFLARE_ACCOUNT_ID\` | Please go to [CloudFlare Workers Page](https://dash.cloudflare.com/?to=/:account/workers) and copy the account id from the right sidebar. Note that you might need to create a \"Hello World\" worker before you see the account id in the interface. |\n" >> $GITHUB_STEP_SUMMARY
+            echo "::error::Secret CLOUDFLARE_ACCOUNT_ID not set"
             result=1
           else 
-            printf "| ✅ \`CF_ACCOUNT_ID\` | Found |\n" >> $GITHUB_STEP_SUMMARY
+            printf "| ✅ \`CLOUDFLARE_ACCOUNT_ID\` | Found |\n" >> $GITHUB_STEP_SUMMARY
           fi
           if [ -z "$TELEGRAM_BOT_TOKEN" ]; then
             printf "| ❌ \`TELEGRAM_BOT_TOKEN\` | Please create a Telegram bot via [@BotFather](https://t.me/botfather) and set the token as a secret in your repository. |\n" >> $GITHUB_STEP_SUMMARY
@@ -99,38 +99,38 @@ jobs:
       - name: Call CloudFlare API to determine the workers.dev subdomain
         id: get_subdomain
         env: 
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/workers/subdomain" \
-          -H "Authorization: Bearer $CF_API_TOKEN" | jq -r '.result.subdomain' | echo subdomain=$(cat).workers.dev >> $GITHUB_OUTPUT
+          curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/subdomain" \
+          -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | jq -r '.result.subdomain' | echo subdomain=$(cat).workers.dev >> $GITHUB_OUTPUT
            
       - name: Call CloudFlare API to find the database id by name
         id: get_db_id_by_name
         env: 
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/d1/database?name=${{ steps.determine_database.outputs.name }}" \
-          -H "Authorization: Bearer $CF_API_TOKEN" | jq -r '.result[0].uuid' | echo uuid=$(cat) >> $GITHUB_OUTPUT           
+          curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/d1/database?name=${{ steps.determine_database.outputs.name }}" \
+          -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | jq -r '.result[0].uuid' | echo uuid=$(cat) >> $GITHUB_OUTPUT           
       
       - name: Call CloudFlare API to find the database name by id
         id: get_db_name_by_id
         env: 
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/d1/database/${{ steps.determine_database.outputs.id }}" \
-          -H "Authorization: Bearer $CF_API_TOKEN" | jq -r '.result[0].name' | echo name=$(cat) >> $GITHUB_OUTPUT
+          curl -X GET "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/d1/database/${{ steps.determine_database.outputs.id }}" \
+          -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | jq -r '.result[0].name' | echo name=$(cat) >> $GITHUB_OUTPUT
       
       - name: Call CloudFlare API to find Pages URL
         id: get_pages_url
         env:
-          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
-          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          curl -X GET https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/pages/projects/${{ steps.determine_worker.outputs.name }} \
-          -H "Authorization: Bearer $CF_API_TOKEN" | jq -r '.result.subdomain' | echo url=https://$(cat) >> $GITHUB_OUTPUT
+          curl -X GET https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/${{ steps.determine_worker.outputs.name }} \
+          -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" | jq -r '.result.subdomain' | echo url=https://$(cat) >> $GITHUB_OUTPUT
       
       - name: Show all the outputs in summary
         id: show_outputs
