@@ -6,6 +6,10 @@ const mapContainerStyle = {
 	height: '100vh',
 };
 
+function generateRandom() {
+	return Math.random() * 10000000000000000;
+}
+
 function Map() {
 	return (
 		<div className="Map">
@@ -14,8 +18,15 @@ function Map() {
 					center={{ lat: 48.865127, lng: 2.350331 }}
 					mapContainerStyle={mapContainerStyle}
 					zoom={4}
+					mapTypeId={'terrain'}
 				>
-					<KmlLayer url="https://nightskybrightness.s3.eu-west-3.amazonaws.com/artificialNightSkyBrightness_example.kml" />
+					<KmlLayer
+						url={
+							'http://www.google.com/maps/d/u/0/kml?mid=1R8Rw7tZTGw3YHKBTNBOh-LKU5sw' +
+							'&ver=' +
+							generateRandom()
+						}
+					/>
 				</GoogleMap>
 			</LoadScript>
 		</div>
