@@ -22,7 +22,7 @@ function Map() {
 				>
 					<KmlLayer
 						url={
-							'http://www.google.com/maps/d/u/0/kml?mid=1R8Rw7tZTGw3YHKBTNBOh-LKU5sw' +
+							'https://www.google.com/maps/d/kml?mid=1P48djcvHMrsTCnHH5ZYjNB2J4Yiz73E' +
 							'&ver=' +
 							generateRandom()
 						}
