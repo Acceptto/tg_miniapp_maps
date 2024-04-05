@@ -1,37 +1,25 @@
 import React from 'react';
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, KmlLayer } from '@react-google-maps/api';
 
-const libraries = ['places'];
 const mapContainerStyle = {
 	width: '100vw',
 	height: '100vh',
 };
-const center = {
-	lat: 7.2905715, // default latitude
-	lng: 80.6337262, // default longitude
-};
 
-const Map = () => {
-	const { isLoaded, loadError } = useLoadScript({
-		googleMapsApiKey: 'AIzaSyC8NppbeRAKx4bpUqCVxc87Z-DASLD_p_Q',
-		libraries,
-	});
-
-	if (loadError) {
-		return <div>Error loading maps</div>;
-	}
-
-	if (!isLoaded) {
-		return <div>Loading maps</div>;
-	}
-
+function Map() {
 	return (
-		<div>
-			<GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={center}>
-				<Marker position={center} />
-			</GoogleMap>
+		<div className="Map">
+			<LoadScript googleMapsApiKey="AIzaSyC8NppbeRAKx4bpUqCVxc87Z-DASLD_p_Q">
+				<GoogleMap
+					center={{ lat: 48.865127, lng: 2.350331 }}
+					mapContainerStyle={mapContainerStyle}
+					zoom={4}
+				>
+					<KmlLayer url="https://nightskybrightness.s3.eu-west-3.amazonaws.com/artificialNightSkyBrightness_example.kml" />
+				</GoogleMap>
+			</LoadScript>
 		</div>
 	);
-};
+}
 
 export default Map;
