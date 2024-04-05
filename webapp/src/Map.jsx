@@ -15,7 +15,7 @@ function Map() {
 		<div className="Map">
 			<LoadScript googleMapsApiKey="AIzaSyC8NppbeRAKx4bpUqCVxc87Z-DASLD_p_Q">
 				<GoogleMap
-					center={{ lat: 40.23164130704827, lng: 15.088623999999982 }}
+					center={{ lat: 48.864299358962384, lng: 2.317224049999984 }}
 					mapContainerStyle={mapContainerStyle}
 					zoom={4}
 					mapTypeId={'terrain'}
