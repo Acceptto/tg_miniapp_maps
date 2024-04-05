@@ -17,7 +17,7 @@ function Map() {
 				<GoogleMap
 					center={{ lat: 48.864299358962384, lng: 2.317224049999984 }}
 					mapContainerStyle={mapContainerStyle}
-					zoom={4}
+					zoom={14}
 					mapTypeId={'terrain'}
 				>
 					<KmlLayer
