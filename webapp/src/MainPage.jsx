@@ -1,9 +1,9 @@
+import { useQuery } from '@tanstack/react-query';
+import { useWebApp } from '@vkruglikov/react-telegram-web-app';
 import { useEffect } from 'react';
 import 'react-day-picker/dist/style.css';
 import { initMiniApp } from './api';
-import { useWebApp } from '@vkruglikov/react-telegram-web-app';
-import { useQuery } from '@tanstack/react-query';
-import Map from './Map';
+import BottomTabbar from './BottomTabbar.jsx';
 
 function MainPage() {
 	const { ready, initData, backgroundColor } = useWebApp();
@@ -37,7 +37,7 @@ function MainPage() {
 		return <div>Error! Try reloading the app</div>;
 	}
 
-	return <Map token={token} />;
+	return <BottomTabbar token={token} />;
 }
 
 export default MainPage;

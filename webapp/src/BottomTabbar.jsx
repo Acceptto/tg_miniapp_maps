@@ -1,0 +1,29 @@
+import { useState } from 'react';
+import { FixedLayout, Tabbar, Icon28Devices, Icon28Chat, Icon28Stats } from '@xelene/tgui';
+
+const BottomTabbar = () => {
+	const [currentTab, setCurrentTab] = useState(0);
+
+	const tabs = [
+		{ id: 0, Icon: Icon28Devices, text: 'Devices' },
+		{ id: 1, Icon: Icon28Chat, text: 'Chat' },
+		{ id: 2, Icon: Icon28Stats, text: 'Stats' },
+	];
+
+	return (
+		<FixedLayout vertical="bottom">
+			<Tabbar>
+				{tabs.map(({ id, text, Icon }) => (
+					<Tabbar.Item
+						key={id}
+						text={text}
+						selected={id === currentTab}
+						onClick={() => setCurrentTab(id)}
+					>
+						<Icon />
+					</Tabbar.Item>
+				))}
+			</Tabbar>
+		</FixedLayout>
+	);
+};
