@@ -23,3 +23,5 @@ const BottomTabbar = () => {
 		</Tabbar>
 	);
 };
+
+export default BottomTabbar;
