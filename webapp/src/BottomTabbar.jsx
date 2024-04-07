@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FixedLayout, Tabbar, Icon28Devices, Icon28Chat, Icon28Stats } from '@xelene/tgui';
+import { FixedLayout, Tabbar } from '@xelene/tgui';
 import { Icon28Devices } from 'icons/28/chat';
 import { Icon28Devices } from 'icons/28/devices';
 import { Icon28Devices } from 'icons/28/stats';
