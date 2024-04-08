@@ -3,7 +3,7 @@ import { useWebApp } from '@vkruglikov/react-telegram-web-app';
 import { useEffect } from 'react';
 import 'react-day-picker/dist/style.css';
 import { initMiniApp } from './api';
-import BottomTabbar from './BottomTabbar.jsx';
+import Segment from './Segment.jsx';
 
 function MainPage() {
 	const { ready, initData, backgroundColor } = useWebApp();
@@ -37,7 +37,7 @@ function MainPage() {
 		return <div>Error! Try reloading the app</div>;
 	}
 
-	return <BottomTabbar token={token} />;
+	return <Segment token={token} />;
 }
 
 export default MainPage;
