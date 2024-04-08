@@ -2,8 +2,10 @@ import { Banner, Image, Button, List } from '@xelene/tgui';
 
 const Community = () => {
 	const handleMapClick = mapUrl => {
-		const mapsUrl = `googlemaps://maps.google.com/?q=${encodeURIComponent(mapUrl)}`;
-		window.location.href = mapsUrl;
+		window.open(
+			`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapUrl)}`,
+			'_blank'
+		);
 	};
 
 	return (
@@ -27,7 +29,7 @@ const Community = () => {
 						<Banner
 							key={banner.id}
 							type="section"
-							style={{ marginBottom: 10, textAlign: 'left' }}
+							style={{ marginBottom: 16, textAlign: 'left' }}
 							{...banner}
 						>
 							{banner.children && (
@@ -58,7 +60,7 @@ const bannersData = [
 		subheader: 'by Iryna',
 		before: <Image size={48} src="https://img.icons8.com/color/48/eiffel-tower.png" />,
 		children: 'View map',
-		url: 'https://www.google.com/maps/search/?api=1&query=Paris',
+		url: 'Paris',
 	},
 	{
 		id: 3,
@@ -66,7 +68,7 @@ const bannersData = [
 		subheader: 'by Dimitri',
 		before: <Image size={48} src="https://img.icons8.com/cute-clipart/64/wine.png" />,
 		children: 'View map',
-		url: 'https://www.google.com/maps/search/?api=1&query=Porto+wine',
+		url: 'Porto wine',
 	},
 	{
 		id: 4,
@@ -79,7 +81,7 @@ const bannersData = [
 			/>
 		),
 		children: 'View map',
-		url: 'https://www.google.com/maps/search/?api=1&query=Fuertoventura+beaches',
+		url: 'Fuertoventura beaches',
 	},
 	{
 		id: 5,
@@ -87,7 +89,7 @@ const bannersData = [
 		subheader: 'by Iryna',
 		before: <Image size={48} src="https://img.icons8.com/fluency/48/budapest.png" />,
 		children: 'View map',
-		url: 'https://www.google.com/maps/search/?api=1&query=Budapest+desserts',
+		url: 'Budapest desserts',
 	},
 ];
 
