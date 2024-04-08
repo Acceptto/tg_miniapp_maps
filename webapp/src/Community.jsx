@@ -2,7 +2,10 @@ import { Banner, Image, Button, List } from '@xelene/tgui';
 
 const Community = () => {
 	const handleMapClick = mapUrl => {
-		window.open(`${encodeURIComponent(mapUrl)}`, '_blank');
+		window.open(
+			`https://www.google.com/maps/d/u/0/viewer?mid=1P48djcvHMrsTCnHH5ZYjNB2J4Yiz73E&ll=48.864299358962384%2C2.317224049999984&z=14`,
+			'_blank'
+		);
 	};
 
 	return (
