@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import { useWebApp } from '@vkruglikov/react-telegram-web-app';
 import { useEffect, useState } from 'react';
+import 'react-day-picker/dist/style.css';
 import { initMiniApp } from './api';
-import { FixedLayout, SegmentedControl } from '@xelene/tgui';
+import { Flex, SegmentedControl } from '@xelene/tgui';
 import Community from './Community';
 import Friends from './Friends';
 
@@ -59,8 +60,23 @@ function MainPage() {
 	];
 
 	return (
-		<div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
-			<FixedLayout vertical="top" style={{ padding: 16 }}>
+		<Flex
+			direction="column"
+			style={{
+				height: '100vh',
+				backgroundColor,
+			}}
+		>
+			<Flex.Item
+				style={{
+					flexShrink: 0,
+					position: 'sticky',
+					top: 0,
+					zIndex: 1,
+					backgroundColor,
+					padding: 16,
+				}}
+			>
 				<SegmentedControl style={{ maxWidth: 400, margin: '0 auto' }}>
 					{labels.map(({ value, label }) => (
 						<SegmentedControl.Item
@@ -72,17 +88,16 @@ function MainPage() {
 						</SegmentedControl.Item>
 					))}
 				</SegmentedControl>
-			</FixedLayout>
-			<div
+			</Flex.Item>
+			<Flex.Item
 				style={{
 					flex: 1,
 					overflowY: 'auto',
-					paddingTop: 72, // Add some padding to avoid overlap
 				}}
 			>
 				{renderContent()}
-			</div>
-		</div>
+			</Flex.Item>
+		</Flex>
 	);
 }
 
