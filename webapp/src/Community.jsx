@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Banner } from '@xelene/tgui';
-import { Button } from '@xelene/tgui';
+import { Banner, Button, Image } from '@xelene/tgui';
 
 const Community = () => {
 	const bannersData = [
 		{
+			before: <Image size={48} />,
 			id: 1,
 			header: 'Map of shipwrecks around the world',
 			subheader: 'by Dimitri',
@@ -15,6 +15,7 @@ const Community = () => {
 			),
 		},
 		{
+			before: <Image size={48} />,
 			id: 2,
 			header: 'Paris for coffe lovers',
 			subheader: 'by Iryna',
@@ -25,6 +26,7 @@ const Community = () => {
 			),
 		},
 		{
+			before: <Image size={48} />,
 			id: 3,
 			header: 'Porto as a wine adventure',
 			subheader: 'by Alex',
