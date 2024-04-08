@@ -1,6 +1,5 @@
 // Community.jsx
 import { Banner, Image, Button, List } from '@xelene/tgui';
-import { Link } from 'react-router-dom';
 
 const Community = () => {
 	return (
@@ -15,11 +14,7 @@ const Community = () => {
 					type="section"
 					style={{ marginBottom: 16, textAlign: 'left' }}
 					{...banner}
-				>
-					<Link to="/map">
-						<Button size="s">View map</Button>
-					</Link>
-				</Banner>
+				></Banner>
 			))}
 		</List>
 	);
@@ -31,18 +26,21 @@ const bannersData = [
 		header: 'Map of shipwrecks around the world',
 		subheader: 'by Dimitri',
 		before: <Image size={48} src="https://img.icons8.com/color/48/viking-ship.png" />,
+		children: <Button size="s">View map</Button>,
 	},
 	{
 		id: 2,
 		header: 'Paris with Iryna',
 		subheader: 'by Iryna',
 		before: <Image size={48} src="https://img.icons8.com/color/48/eiffel-tower.png" />,
+		children: <Button size="s">View map</Button>,
 	},
 	{
 		id: 3,
 		header: 'Porto wine map',
 		subheader: 'by Dimitri',
 		before: <Image size={48} src="https://img.icons8.com/cute-clipart/64/wine.png" />,
+		children: <Button size="s">View map</Button>,
 	},
 	{
 		id: 4,
@@ -60,6 +58,7 @@ const bannersData = [
 		header: 'Budapest desserts',
 		subheader: 'by Iryna',
 		before: <Image size={48} src="https://img.icons8.com/fluency/48/budapest.png" />,
+		children: <Button size="s">View map</Button>,
 	},
 ];
 
