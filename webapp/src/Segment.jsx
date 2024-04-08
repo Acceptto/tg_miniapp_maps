@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FixedLayout, SegmentedControl } from '@xelene/tgui';
-import CommunityComponent from './CommunityComponent'; // Import your Community component
-import FriendsComponent from './FriendsComponent'; // Import your Friends component
+import Community from './Community'; // Import your Community component
+import Friends from './Friends'; // Import your Friends components
 
 const labels = [
 	{
@@ -20,9 +20,9 @@ const Segment = () => {
 	const renderContent = () => {
 		switch (selected) {
 			case 'community':
-				return <CommunityComponent />;
+				return <Community />;
 			case 'friends':
-				return <FriendsComponent />;
+				return <Friends />;
 			default:
 				return null;
 		}
