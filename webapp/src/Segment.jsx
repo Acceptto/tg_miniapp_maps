@@ -3,16 +3,12 @@ import { FixedLayout, SegmentedControl } from '@xelene/tgui';
 
 const labels = [
 	{
-		label: 'Label',
+		label: 'Community',
 		value: 'label',
 	},
 	{
-		label: 'Label 2',
+		label: 'You&Friends',
 		value: 'label2',
-	},
-	{
-		label: 'Label 3',
-		value: 'label3',
 	},
 ];
 
@@ -21,7 +17,7 @@ const Segment = () => {
 
 	return (
 		<FixedLayout vertical="top" style={{ padding: '16px' }}>
-			<SegmentedControl style={{ width: 300 }}>
+			<SegmentedControl style={{ maxWidth: 400, margin: '0 auto' }}>
 				{labels.map(({ value, label }) => (
 					<SegmentedControl.Item
 						key={value}
