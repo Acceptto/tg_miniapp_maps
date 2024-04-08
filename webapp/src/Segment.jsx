@@ -29,10 +29,17 @@ const Segment = () => {
 	};
 
 	return (
-		<div>
+		<div
+			style={{
+				height: 200,
+				width: 400,
+			}}
+		>
 			<FixedLayout
 				vertical="top"
-				style={{ padding: '16px', display: 'flex', justifyContent: 'center' }}
+				style={{
+					padding: 16,
+				}}
 			>
 				<SegmentedControl style={{ maxWidth: 400, margin: '0 auto' }}>
 					{labels.map(({ value, label }) => (
