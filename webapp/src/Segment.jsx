@@ -31,7 +31,7 @@ const Segment = () => {
 	return (
 		<div
 			style={{
-				height: 50,
+				height: 100,
 				width: 400,
 			}}
 		>
@@ -53,7 +53,13 @@ const Segment = () => {
 					))}
 				</SegmentedControl>
 			</FixedLayout>
-			<div>{renderContent()}</div>{' '}
+			<div
+				style={{
+					overflowX: 'hidden', // Prevent horizontal scrolling
+				}}
+			>
+				{renderContent()}
+			</div>{' '}
 		</div>
 	);
 };
