@@ -31,7 +31,7 @@ const Segment = () => {
 	return (
 		<div
 			style={{
-				height: 200,
+				height: 50,
 				width: 400,
 			}}
 		>
