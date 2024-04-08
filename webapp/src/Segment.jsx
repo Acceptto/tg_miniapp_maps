@@ -53,7 +53,13 @@ const Segment = () => {
 					))}
 				</SegmentedControl>
 			</FixedLayout>
-			<div>{renderContent()}</div>{' '}
+			<div
+				style={{
+					overflowX: 'hidden', // Prevent horizontal scrolling
+				}}
+			>
+				{renderContent()}
+			</div>{' '}
 		</div>
 	);
 };

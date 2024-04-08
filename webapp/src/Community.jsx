@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Banner, Image, Button, List } from '@xelene/tgui';
+import Map from './Map';
 
 const Community = () => {
-	const navigate = useNavigate(); // Initialize navigate if using React Router  Initialize navigate if using React Router
+	const [showMap, setShowMap] = useState(false); // Initialize navigate if using React Router  Initialize navigate if using React Router
 	const bannersData = [
 		{
 			id: 1,
@@ -11,7 +11,7 @@ const Community = () => {
 			subheader: 'by Dimitri',
 			before: <Image size={48} src="https://img.icons8.com/color/48/viking-ship.png" />,
 			children: (
-				<Button size="s" onClick={() => navigate('/map')}>
+				<Button size="s" onClick={() => setShowMap(!showMap)}>
 					View map
 				</Button>
 			),
@@ -22,7 +22,7 @@ const Community = () => {
 			subheader: 'by Iryna',
 			before: <Image size={48} src="https://img.icons8.com/color/48/eiffel-tower.png" />,
 			children: (
-				<Button size="s" onClick={() => navigate('/map')}>
+				<Button size="s" onClick={() => setShowMap(!showMap)}>
 					View map
 				</Button>
 			),
@@ -33,7 +33,7 @@ const Community = () => {
 			subheader: 'by Dimitri',
 			before: <Image size={48} src="https://img.icons8.com/cute-clipart/64/wine.png" />,
 			children: (
-				<Button size="s" onClick={() => navigate('/map')}>
+				<Button size="s" onClick={() => setShowMap(!showMap)}>
 					View map
 				</Button>
 			),
@@ -49,7 +49,7 @@ const Community = () => {
 				/>
 			),
 			children: (
-				<Button size="s" onClick={() => navigate('/map')}>
+				<Button size="s" onClick={() => setShowMap(!showMap)}>
 					View map
 				</Button>
 			),
@@ -60,7 +60,7 @@ const Community = () => {
 			subheader: 'by Iryna',
 			before: <Image size={48} src="https://img.icons8.com/fluency/48/budapest.png" />,
 			children: (
-				<Button size="s" onClick={() => navigate('/map')}>
+				<Button size="s" onClick={() => setShowMap(!showMap)}>
 					View map
 				</Button>
 			),
@@ -73,6 +73,8 @@ const Community = () => {
 				background: 'var(--tgui--secondary_bg_color)', // Optional for horizontal alignment
 			}}
 		>
+			{/* Conditionally render Map component */}
+			{showMap && <Map />}
 			{bannersData.map(banner => (
 				<Banner
 					key={banner.id}
