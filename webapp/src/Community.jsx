@@ -1,4 +1,3 @@
-// Community.jsx
 import { Banner, Image, Button, List } from '@xelene/tgui';
 
 const Community = () => {
