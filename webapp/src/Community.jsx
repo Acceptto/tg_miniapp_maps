@@ -22,14 +22,16 @@ const Community = () => {
 	return (
 		<List
 			style={{
-				background: 'var(--tgui--secondary_bg_color)',
-				display: 'flex',
-				flexDirection: 'column',
-				alignItems: 'flex-start', // Optional for horizontal alignment
+				background: 'var(--tgui--secondary_bg_color)', // Optional for horizontal alignment
 			}}
 		>
 			{bannersData.map(banner => (
-				<Banner key={banner.id} type="section" style={{ marginBottom: 16 }} {...banner} />
+				<Banner
+					key={banner.id}
+					type="section"
+					style={{ marginBottom: 16, textAlign: 'left' }}
+					{...banner}
+				/>
 			))}
 		</List>
 	);
