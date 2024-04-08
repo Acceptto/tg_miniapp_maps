@@ -1,33 +1,39 @@
-import React, { useState } from 'react';
-import { SegmentedControl } from '@xelene/tgui';
+import { useState } from 'react';
+import { FixedLayout, SegmentedControl } from '@xelene/tgui';
 
-function Segment() {
-	const [selectedValue, setSelectedValue] = useState('option1');
+const labels = [
+	{
+		label: 'Label',
+		value: 'label',
+	},
+	{
+		label: 'Label 2',
+		value: 'label2',
+	},
+	{
+		label: 'Label 3',
+		value: 'label3',
+	},
+];
 
-	const handleChange = newValue => {
-		setSelectedValue(newValue);
-		// Additional logic based on selected value
-	};
+const Segment = () => {
+	const [selected, setSelected] = useState(labels[0].value);
 
 	return (
-		<SegmentedControl>
-			<SegmentedControl.Item
-				value="option1"
-				selected={selectedValue === 'option1'}
-				onClick={() => handleChange('option1')}
-			>
-				Option 1
-			</SegmentedControl.Item>
-			<SegmentedControl.Item
-				value="option2"
-				selected={selectedValue === 'option2'}
-				onClick={() => handleChange('option2')}
-			>
-				Option 2
-			</SegmentedControl.Item>
-			{/* Add more SegmentedControl.Item as needed */}
-		</SegmentedControl>
+		<FixedLayout vertical="top" style={{ padding: '16px' }}>
+			<SegmentedControl style={{ width: 300 }}>
+				{labels.map(({ value, label }) => (
+					<SegmentedControl.Item
+						key={value}
+						selected={selected === value}
+						onClick={() => setSelected(value)}
+					>
+						{label}
+					</SegmentedControl.Item>
+				))}
+			</SegmentedControl>
+		</FixedLayout>
 	);
-}
+};
 
 export default Segment;
