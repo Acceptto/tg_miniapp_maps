@@ -2,10 +2,7 @@ import { Banner, Image, Button, List } from '@xelene/tgui';
 
 const Community = () => {
 	const handleMapClick = mapUrl => {
-		window.open(
-			`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapUrl)}`,
-			'_blank'
-		);
+		window.open(`${encodeURIComponent(mapUrl)}`, '_blank');
 	};
 
 	return (
@@ -60,7 +57,7 @@ const bannersData = [
 		subheader: 'by Iryna',
 		before: <Image size={48} src="https://img.icons8.com/color/48/eiffel-tower.png" />,
 		children: 'View map',
-		url: 'Paris',
+		url: 'https://www.google.com/maps/d/u/0/viewer?mid=1P48djcvHMrsTCnHH5ZYjNB2J4Yiz73E&ll=48.864299358962384%2C2.317224049999984&z=14',
 	},
 	{
 		id: 3,
@@ -68,7 +65,7 @@ const bannersData = [
 		subheader: 'by Dimitri',
 		before: <Image size={48} src="https://img.icons8.com/cute-clipart/64/wine.png" />,
 		children: 'View map',
-		url: 'Porto wine',
+		url: 'https://www.google.com/maps/d/u/0/viewer?mid=1P48djcvHMrsTCnHH5ZYjNB2J4Yiz73E&ll=48.864299358962384%2C2.317224049999984&z=14',
 	},
 	{
 		id: 4,
@@ -81,7 +78,7 @@ const bannersData = [
 			/>
 		),
 		children: 'View map',
-		url: 'Fuertoventura beaches',
+		url: 'https://www.google.com/maps/d/u/0/viewer?mid=1P48djcvHMrsTCnHH5ZYjNB2J4Yiz73E&ll=48.864299358962384%2C2.317224049999984&z=14',
 	},
 	{
 		id: 5,
@@ -89,7 +86,7 @@ const bannersData = [
 		subheader: 'by Iryna',
 		before: <Image size={48} src="https://img.icons8.com/fluency/48/budapest.png" />,
 		children: 'View map',
-		url: 'Budapest desserts',
+		url: 'https://www.google.com/maps/d/u/0/viewer?mid=1P48djcvHMrsTCnHH5ZYjNB2J4Yiz73E&ll=48.864299358962384%2C2.317224049999984&z=14',
 	},
 ];
 
