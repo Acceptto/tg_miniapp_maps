@@ -1,7 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useWebApp } from '@vkruglikov/react-telegram-web-app';
 import { useEffect, useState } from 'react';
-import 'react-day-picker/dist/style.css';
 import { initMiniApp } from './api';
 import { FixedLayout, SegmentedControl } from '@xelene/tgui';
 import Community from './Community';
@@ -60,7 +59,7 @@ function MainPage() {
 	];
 
 	return (
-		<div style={{ height: 100, width: 400 }}>
+		<div style={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
 			<FixedLayout vertical="top" style={{ padding: 16 }}>
 				<SegmentedControl style={{ maxWidth: 400, margin: '0 auto' }}>
 					{labels.map(({ value, label }) => (
@@ -74,7 +73,15 @@ function MainPage() {
 					))}
 				</SegmentedControl>
 			</FixedLayout>
-			<div style={{ overflowX: 'hidden' }}>{renderContent()}</div>
+			<div
+				style={{
+					flex: 1,
+					overflowY: 'auto',
+					paddingTop: 72, // Add some padding to avoid overlap
+				}}
+			>
+				{renderContent()}
+			</div>
 		</div>
 	);
 }
