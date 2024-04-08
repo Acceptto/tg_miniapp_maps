@@ -8,12 +8,15 @@ const Community = () => {
 			header: 'Map of shipwrecks around the world',
 			subheader: 'by Dimitri',
 			before: <Image size={48} />,
+			children: <Button size="s">Try it out</Button>,
+			background: 'var(--tgui--secondary_bg_color)',
 		},
 		{
 			id: 2,
 			header: 'Paris with Iryna',
 			subheader: 'by Iryna',
 			before: <Image size={48} />, // Assuming you have avatar URLs
+			children: <Button size="s">Try it out</Button>,
 		},
 	];
 
@@ -21,14 +24,7 @@ const Community = () => {
 		<div>
 			{bannersData.map(banner => (
 				<div key={banner.id} style={{ marginBottom: 16 }}>
-					<Banner type="section" {...banner}>
-						<React.Fragment key=".0">
-							<Button size="s">Try it out</Button>
-							<Button mode="plain" size="s">
-								Maybe later
-							</Button>
-						</React.Fragment>
-					</Banner>
+					<Banner type="section" {...banner}></Banner>
 				</div>
 			))}
 		</div>
