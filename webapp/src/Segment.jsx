@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SegmentedControl } from '@xelene/tgui';
 
-export function Segment() {
+function Segment() {
 	const [selectedValue, setSelectedValue] = useState('option1');
 
 	const handleChange = newValue => {
@@ -29,3 +29,5 @@ export function Segment() {
 		</SegmentedControl>
 	);
 }
+
+export default Segment;
