@@ -25,7 +25,14 @@ const Community = () => {
 							style={{ marginBottom: 16, textAlign: 'left' }}
 							{...banner}
 						>
-							{banner.children && <Button size="s">{banner.children}</Button>}
+							{banner.children && (
+								<Button
+									size="s"
+									src="https://www.google.com/maps/d/u/0/viewer?mid=1P48djcvHMrsTCnHH5ZYjNB2J4Yiz73E&ll=48.864299358962384%2C2.317224049999984&z=14"
+								>
+									{banner.children}
+								</Button>
+							)}
 						</Banner>
 					))}
 				</List>
@@ -66,6 +73,7 @@ const bannersData = [
 				src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-beach-tropical-flaticons-lineal-color-flat-icons-5.png"
 			/>
 		),
+		children: 'View map',
 	},
 	{
 		id: 5,
