@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { Banner, Image, Button, List } from '@xelene/tgui';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Map from './Map';
 
 const Community = () => {
@@ -23,12 +22,9 @@ const Community = () => {
 						</Link>
 					</Banner>
 				))}
-
-				<Switch>
-					<Route path="/map">
-						<Map />
-					</Route>
-				</Switch>
+				<Routes>
+					<Route path="/map" element={<Map />} />
+				</Routes>
 			</List>
 		</Router>
 	);
