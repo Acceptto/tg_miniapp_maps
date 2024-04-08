@@ -1,32 +1,27 @@
+// Community.jsx
 import { Banner, Image, Button, List } from '@xelene/tgui';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Map from './Map';
+import { Link } from 'react-router-dom';
 
 const Community = () => {
 	return (
-		<Router>
-			<List
-				style={{
-					background: 'var(--tgui--secondary_bg_color)', // Optional for horizontal alignment
-				}}
-			>
-				{bannersData.map(banner => (
-					<Banner
-						key={banner.id}
-						type="section"
-						style={{ marginBottom: 16, textAlign: 'left' }}
-						{...banner}
-					>
-						<Link to="/map">
-							<Button size="s">View map</Button>
-						</Link>
-					</Banner>
-				))}
-				<Routes>
-					<Route path="/map" element={<Map />} />
-				</Routes>
-			</List>
-		</Router>
+		<List
+			style={{
+				background: 'var(--tgui--secondary_bg_color)', // Optional for horizontal alignment
+			}}
+		>
+			{bannersData.map(banner => (
+				<Banner
+					key={banner.id}
+					type="section"
+					style={{ marginBottom: 16, textAlign: 'left' }}
+					{...banner}
+				>
+					<Link to="/map">
+						<Button size="s">View map</Button>
+					</Link>
+				</Banner>
+			))}
+		</List>
 	);
 };
 
