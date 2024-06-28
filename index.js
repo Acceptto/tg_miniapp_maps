@@ -8,7 +8,7 @@ import { generateSecret, sha256 } from './cryptoUtils';
 // Create a new router
 const router = Router();
 const handle = async (request, env, ctx) => {
-	let telegram = new Telegram(env.TELEGRAM_BOT_TOKEN, env.TELEGRAM_USE_TEST_API);
+	let telegram = new Telegram(env.TELEGRAM_BOT_TOKEN, true);
 	let db = new Database(env.DB);
 	let corsHeaders = {
 		'Access-Control-Allow-Origin': env.FRONTEND_URL,
